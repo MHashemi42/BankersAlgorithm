@@ -3,21 +3,21 @@
 <div class="container mt-5">
     <h1 class="text-center">الگوریتم بانکداران - محمد هاشمی</h1>
     <div class="row mt-5 text-center justify-content-evenly">
-        <div class="col-2">
+        <div class="col-3">
             <label for="resourceA" class="form-label">تعداد منبع A</label>
             <input type="number" min="0" @bind="resourceA" class="form-control" id="resourceA">
         </div>
-        <div class="col-2">
+        <div class="col-3">
             <label for="resourceB" class="form-label">تعداد منبع B</label>
             <input type="number" min="0" @bind="resourceB" class="form-control" id="resourceB">
         </div>
-        <div class="col-2">
+        <div class="col-3">
             <label for="resourceC" class="form-label">تعداد منبع C</label>
             <input type="number" min="0" @bind="resourceC" class="form-control" id="resourceC">
         </div>
     </div>
-    <div class="row mt-4">
-        <div class="col-3 px-3">
+    <div class="row justify-content-center mt-4">
+        <div class="col-12 col-md-6 col-lg-4 col-xl-3 px-3">
             <h3 class="text-center">Allocation</h3>
             <table class="table">
                 <thead>
@@ -92,7 +92,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="col-3 px-3">
+        <div class="col-12 col-md-6 col-lg-4 col-xl-3 px-3">
             <h3 class="text-center">Maximum</h3>
             <table class="table">
                 <thead>
@@ -167,7 +167,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="col-3 px-3">
+        <div class="col-12 col-md-6 col-lg-4 col-xl-3 px-3">
             <h3 class="text-center">Need</h3>
             <table class="table">
                 <thead>
@@ -242,7 +242,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="col-3 px-3">
+        <div class="col-12 col-md-6 col-lg-4 col-xl-3 px-3">
             <div class="row">
                 <h3 class="text-center">Available</h3>
                 <table class="table">
@@ -268,8 +268,8 @@
                     </tbody>
                 </table>
             </div>
-            <div class="row @(showResult ? "" : "invisible")">
-                <div class="card text-bg-@(isSafe ? "success" : "danger") mb-3" style="max-width: 18rem;">
+            <div class="row justify-content-center  @(showResult ? "" : "invisible")">
+                <div class="card text-bg-@(isSafe ? "success" : "danger") mb-3" style="max-width: 20rem;">
                     <div class="card-header">نتیجه الگوریتم</div>
                     <div class="card-body">
                         <h5 class="card-title">@(isSafe ? "امن" : "بن بست")</h5>
@@ -281,7 +281,7 @@
             </div>
         </div>
     </div>
-    <div class="row mt-4">
+    <div class="row justify-content-center  my-4">
         <div class="col-auto">
             <button class="btn btn-primary" @onclick="StartAlgorithm">شروع الگوریتم</button>
         </div>
