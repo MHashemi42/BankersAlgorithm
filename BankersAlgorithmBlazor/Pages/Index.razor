@@ -4,15 +4,15 @@
     <h1 class="text-center">الگوریتم بانکداران - محمد هاشمی</h1>
     <div class="row mt-5 text-center justify-content-evenly">
         <div class="col-3">
-            <label for="resourceA" class="form-label">تعداد منبع A</label>
+            <label for="resourceA" class="form-label">A تعداد منبع</label>
             <input type="number" min="0" @bind="resourceA" class="form-control" id="resourceA">
         </div>
         <div class="col-3">
-            <label for="resourceB" class="form-label">تعداد منبع B</label>
+            <label for="resourceB" class="form-label">B تعداد منبع</label>
             <input type="number" min="0" @bind="resourceB" class="form-control" id="resourceB">
         </div>
         <div class="col-3">
-            <label for="resourceC" class="form-label">تعداد منبع C</label>
+            <label for="resourceC" class="form-label">C تعداد منبع</label>
             <input type="number" min="0" @bind="resourceC" class="form-control" id="resourceC">
         </div>
     </div>
@@ -268,7 +268,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="row justify-content-center  @(showResult ? "" : "invisible")">
+            <div class="row justify-content-center  @(showResult ? "" : "invisible")" dir="rtl">
                 <div class="card text-bg-@(isSafe ? "success" : "danger") mb-3" style="max-width: 20rem;">
                     <div class="card-header">نتیجه الگوریتم</div>
                     <div class="card-body">
