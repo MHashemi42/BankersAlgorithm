@@ -1,0 +1,387 @@
+﻿@page "/"
+
+<div class="container mt-5">
+    <h1 class="text-center">الگوریتم بانکداران - محمد هاشمی</h1>
+    <div class="row mt-5 text-center justify-content-evenly">
+        <div class="col-2">
+            <label for="resourceA" class="form-label">تعداد منبع A</label>
+            <input type="number" min="0" @bind="resourceA" class="form-control" id="resourceA">
+        </div>
+        <div class="col-2">
+            <label for="resourceB" class="form-label">تعداد منبع B</label>
+            <input type="number" min="0" @bind="resourceB" class="form-control" id="resourceB">
+        </div>
+        <div class="col-2">
+            <label for="resourceC" class="form-label">تعداد منبع C</label>
+            <input type="number" min="0" @bind="resourceC" class="form-control" id="resourceC">
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-3 px-3">
+            <h3 class="text-center">Allocation</h3>
+            <table class="table">
+                <thead>
+                    <tr class="text-center">
+                        <th scope="col">#</th>
+                        <th scope="col">A</th>
+                        <th scope="col">B</th>
+                        <th scope="col">C</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">P0</th>
+                        <td>
+                            <input type="number" min="0" @bind="allocationMatrix[0,0]" class="form-control">
+                        </td>
+                        <td>
+                            <input type="number" min="0"  @bind="allocationMatrix[0,1]" class="form-control">
+                        </td>
+                        <td>
+                            <input type="number" min="0" @bind="allocationMatrix[0,2]" class="form-control">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">P1</th>
+                        <td>
+                            <input type="number" min="0" @bind="allocationMatrix[1,0]" class="form-control">
+                        </td>
+                        <td>
+                            <input type="number" min="0" @bind="allocationMatrix[1,1]" class="form-control">
+                        </td>
+                        <td>
+                            <input type="number" min="0" @bind="allocationMatrix[1,2]" class="form-control">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">P2</th>
+                        <td>
+                            <input type="number" min="0" @bind="allocationMatrix[2,0]" class="form-control">
+                        </td>
+                        <td>
+                            <input type="number" min="0" @bind="allocationMatrix[2,1]" class="form-control">
+                        </td>
+                        <td>
+                            <input type="number" min="0" @bind="allocationMatrix[2,2]" class="form-control">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">P3</th>
+                        <td>
+                            <input type="number" min="0" @bind="allocationMatrix[3,0]" class="form-control">
+                        </td>
+                        <td>
+                            <input type="number" min="0" @bind="allocationMatrix[3,1]" class="form-control">
+                        </td>
+                        <td>
+                            <input type="number" min="0" @bind="allocationMatrix[3,2]" class="form-control">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">P4</th>
+                        <td>
+                            <input type="number" min="0" @bind="allocationMatrix[4,0]" class="form-control">
+                        </td>
+                        <td>
+                            <input type="number" min="0" @bind="allocationMatrix[4,1]" class="form-control">
+                        </td>
+                        <td>
+                            <input type="number" min="0" @bind="allocationMatrix[4,2]" class="form-control">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-3 px-3">
+            <h3 class="text-center">Maximum</h3>
+            <table class="table">
+                <thead>
+                    <tr class="text-center">
+                        <th scope="col">#</th>
+                        <th scope="col">A</th>
+                        <th scope="col">B</th>
+                        <th scope="col">C</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">P0</th>
+                        <td>
+                            <input type="number" min="0" @bind="maxMatrix[0,0]" class="form-control">
+                        </td>
+                        <td>
+                            <input type="number" min="0" @bind="maxMatrix[0,1]" class="form-control">
+                        </td>
+                        <td>
+                            <input type="number" min="0" @bind="maxMatrix[0,2]" class="form-control">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">P1</th>
+                        <td>
+                            <input type="number" min="0" @bind="maxMatrix[1,0]" class="form-control">
+                        </td>
+                        <td>
+                            <input type="number" min="0" @bind="maxMatrix[1,1]" class="form-control">
+                        </td>
+                        <td>
+                            <input type="number" min="0" @bind="maxMatrix[1,2]" class="form-control">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">P2</th>
+                        <td>
+                            <input type="number" min="0" @bind="maxMatrix[2,0]" class="form-control">
+                        </td>
+                        <td>
+                            <input type="number" min="0" @bind="maxMatrix[2,1]" class="form-control">
+                        </td>
+                        <td>
+                            <input type="number" min="0" @bind="maxMatrix[2,2]" class="form-control">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">P3</th>
+                        <td>
+                            <input type="number" min="0" @bind="maxMatrix[3,0]" class="form-control">
+                        </td>
+                        <td>
+                            <input type="number" min="0" @bind="maxMatrix[3,1]" class="form-control">
+                        </td>
+                        <td>
+                            <input type="number" min="0" @bind="maxMatrix[3,2]" class="form-control">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">P4</th>
+                        <td>
+                            <input type="number" min="0" @bind="maxMatrix[4,0]" class="form-control">
+                        </td>
+                        <td>
+                            <input type="number" min="0" @bind="maxMatrix[4,1]" class="form-control">
+                        </td>
+                        <td>
+                            <input type="number" min="0" @bind="maxMatrix[4,2]" class="form-control">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-3 px-3">
+            <h3 class="text-center">Need</h3>
+            <table class="table">
+                <thead>
+                    <tr class="text-center">
+                        <th scope="col">#</th>
+                        <th scope="col">A</th>
+                        <th scope="col">B</th>
+                        <th scope="col">C</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">P0</th>
+                        <td>
+                            <input readonly type="number" @bind="needMatrix[0,0]" class="form-control">
+                        </td>
+                        <td>
+                            <input readonly type="number" @bind="needMatrix[0,1]" class="form-control">
+                        </td>
+                        <td>
+                            <input readonly type="number" @bind="needMatrix[0,2]" class="form-control">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">P1</th>
+                        <td>
+                            <input readonly type="number" @bind="needMatrix[1,0]" class="form-control">
+                        </td>
+                        <td>
+                            <input readonly type="number" @bind="needMatrix[1,1]" class="form-control">
+                        </td>
+                        <td>
+                            <input readonly type="number" @bind="needMatrix[1,2]" class="form-control">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">P2</th>
+                        <td>
+                            <input readonly type="number" @bind="needMatrix[2,0]" class="form-control">
+                        </td>
+                        <td>
+                            <input readonly type="number" @bind="needMatrix[2,1]" class="form-control">
+                        </td>
+                        <td>
+                            <input readonly type="number" @bind="needMatrix[2,2]" class="form-control">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">P3</th>
+                        <td>
+                            <input readonly type="number" @bind="needMatrix[3,0]" class="form-control">
+                        </td>
+                        <td>
+                            <input readonly type="number" @bind="needMatrix[3,1]" class="form-control">
+                        </td>
+                        <td>
+                            <input readonly type="number" @bind="needMatrix[3,2]" class="form-control">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">P4</th>
+                        <td>
+                            <input readonly type="number" @bind="needMatrix[4,0]" class="form-control">
+                        </td>
+                        <td>
+                            <input readonly type="number" @bind="needMatrix[4,1]" class="form-control">
+                        </td>
+                        <td>
+                            <input readonly type="number" @bind="needMatrix[4,2]" class="form-control">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-3 px-3">
+            <div class="row">
+                <h3 class="text-center">Available</h3>
+                <table class="table">
+                    <thead>
+                        <tr class="text-center">
+                            <th scope="col">A</th>
+                            <th scope="col">B</th>
+                            <th scope="col">C</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <input readonly type="number" @bind="available[0]" class="form-control" id="resourceC">
+                            </td>
+                            <td>
+                                <input readonly type="number" @bind="available[1]" class="form-control" id="resourceC">
+                            </td>
+                            <td>
+                                <input readonly type="number" @bind="available[2]" class="form-control" id="resourceC">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="row @(showResult ? "" : "invisible")">
+                <div class="card text-bg-@(isSafe ? "success" : "danger") mb-3" style="max-width: 18rem;">
+                    <div class="card-header">نتیجه الگوریتم</div>
+                    <div class="card-body">
+                        <h5 class="card-title">@(isSafe ? "امن" : "بن بست")</h5>
+                        <p class="card-text">
+                            @answer
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-auto">
+            <button class="btn btn-primary" @onclick="StartAlgorithm">شروع الگوریتم</button>
+        </div>
+        <div class="col-auto">
+            <button class="btn btn-danger" @onclick="ResetValues">ریست کردن مقادیر</button>
+        </div>
+    </div>
+</div>
+
+@code {
+    const int numberOfProcesses = 5;
+    const int numberOfResources = 3;
+
+    int resourceA = 10;
+    int resourceB = 5;
+    int resourceC = 7;
+
+    int[,] allocationMatrix;
+    int[,] maxMatrix;
+    int[,] needMatrix;
+    int[] available;
+    int[] safeSequence;
+
+    bool showResult = false;
+    bool isSafe = false;
+    string answer = string.Empty;
+
+    public Index()
+    {
+        allocationMatrix = new int[,]
+        {
+            {0,1,0},
+            {2,0,0},
+            {3,0,2},
+            {2,1,1},
+            {0,0,2}
+        };
+        maxMatrix = new int[,]
+        {
+            {7,5,3},
+            {3,2,2},
+            {9,0,2},
+            {2,2,2},
+            {4,3,3}
+        };
+        needMatrix = new int[numberOfProcesses, numberOfResources];
+
+        available = new int[numberOfResources];
+        safeSequence = new int[numberOfProcesses];
+    }
+
+    public void StartAlgorithm()
+    {
+        BankersAlgorithm.CalculateNeedMatrix(numberOfProcesses, numberOfResources,
+        maxMatrix, allocationMatrix, needMatrix);
+
+        available[0] = resourceA;
+        available[1] = resourceB;
+        available[2] = resourceC;
+
+        BankersAlgorithm.CalculateAvailable(numberOfProcesses, numberOfResources,
+        allocationMatrix, available);
+
+        isSafe = BankersAlgorithm.IsSafe(numberOfProcesses, numberOfResources, available,
+        allocationMatrix, needMatrix, safeSequence);
+
+        CreateAnswer(isSafe);
+        showResult = true;
+    }
+
+    public void ResetValues()
+    {
+        resourceA = 0;
+        resourceB = 0;
+        resourceC = 0;
+
+        Array.Clear(allocationMatrix);
+        Array.Clear(maxMatrix);
+        Array.Clear(needMatrix);
+        Array.Clear(available);
+
+        showResult = false;
+    }
+
+    public void CreateAnswer(bool isSafe)
+    {
+        if (!isSafe)
+        {
+            answer = "سیستم به بن بست رسیده است.";
+            return;
+        }
+
+        answer = string.Empty;
+        for (int i = 0; i < numberOfProcesses; i++)
+        {
+            answer += "P" + safeSequence[i];
+            if (i != numberOfProcesses - 1)
+            {
+                answer += " -> ";
+            }
+        }
+    }
+}

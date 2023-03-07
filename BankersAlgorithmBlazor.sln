@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankersAlgorithmBlazor", "BankersAlgorithmBlazor\BankersAlgorithmBlazor.csproj", "{3EA3E1CB-0909-4A16-880B-D6DA372C7846}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3EA3E1CB-0909-4A16-880B-D6DA372C7846}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EA3E1CB-0909-4A16-880B-D6DA372C7846}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EA3E1CB-0909-4A16-880B-D6DA372C7846}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EA3E1CB-0909-4A16-880B-D6DA372C7846}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2845769F-BB02-4C63-85E2-30898D6DAB49}
+	EndGlobalSection
+EndGlobal
