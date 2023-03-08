@@ -281,7 +281,7 @@
             </div>
         </div>
     </div>
-    <div class="row justify-content-center  my-4">
+    <div class="row justify-content-center my-4">
         <div class="col-auto">
             <button class="btn btn-primary" @onclick="StartAlgorithm">شروع الگوریتم</button>
         </div>
@@ -331,6 +331,7 @@
 
         available = new int[numberOfResources];
         safeSequence = new int[numberOfProcesses];
+        Array.Fill(safeSequence, -1);
     }
 
     public void StartAlgorithm()
@@ -344,6 +345,8 @@
 
         BankersAlgorithm.CalculateAvailable(numberOfProcesses, numberOfResources,
         allocationMatrix, available);
+
+        Array.Fill(safeSequence, -1);
 
         isSafe = BankersAlgorithm.IsSafe(numberOfProcesses, numberOfResources, available,
         allocationMatrix, needMatrix, safeSequence);
@@ -362,22 +365,25 @@
         Array.Clear(maxMatrix);
         Array.Clear(needMatrix);
         Array.Clear(available);
+        Array.Fill(safeSequence, -1);
 
         showResult = false;
     }
 
     public void CreateAnswer(bool isSafe)
     {
-        if (!isSafe)
-        {
-            answer = "سیستم به بن بست رسیده است.";
-            return;
-        }
-
         answer = string.Empty;
         for (int i = 0; i < numberOfProcesses; i++)
         {
-            answer += "P" + safeSequence[i];
+            if (safeSequence[i] == -1)
+            {
+                answer += "X";
+            }
+            else
+            {
+                answer += "P" + safeSequence[i];
+            }
+
             if (i != numberOfProcesses - 1)
             {
                 answer += " -> ";
