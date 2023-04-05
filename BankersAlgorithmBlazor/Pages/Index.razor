@@ -303,7 +303,6 @@
     int[,] maxMatrix;
     int[,] needMatrix;
     int[] available;
-    int[] safeSequence;
 
     bool showResult = false;
     bool isSafe = false;
@@ -328,30 +327,23 @@
             {4,3,3}
         };
         needMatrix = new int[numberOfProcesses, numberOfResources];
-
         available = new int[numberOfResources];
-        safeSequence = new int[numberOfProcesses];
-        Array.Fill(safeSequence, -1);
     }
 
     public void StartAlgorithm()
     {
-        BankersAlgorithm.CalculateNeedMatrix(numberOfProcesses, numberOfResources,
-        maxMatrix, allocationMatrix, needMatrix);
+        BankersAlgorithm.CalculateNeedMatrix(maxMatrix, allocationMatrix, needMatrix);
 
         available[0] = resourceA;
         available[1] = resourceB;
         available[2] = resourceC;
 
-        BankersAlgorithm.CalculateAvailable(numberOfProcesses, numberOfResources,
-        allocationMatrix, available);
+        BankersAlgorithm.CalculateAvailable(allocationMatrix, available);
 
-        Array.Fill(safeSequence, -1);
+        (isSafe, int[] safeSequence) = BankersAlgorithm
+            .IsSafe(available,allocationMatrix, needMatrix);
 
-        isSafe = BankersAlgorithm.IsSafe(numberOfProcesses, numberOfResources, available,
-        allocationMatrix, needMatrix, safeSequence);
-
-        CreateAnswer(isSafe);
+        CreateAnswer(safeSequence);
         showResult = true;
     }
 
@@ -360,17 +352,14 @@
         resourceA = 0;
         resourceB = 0;
         resourceC = 0;
-
         Array.Clear(allocationMatrix);
         Array.Clear(maxMatrix);
         Array.Clear(needMatrix);
         Array.Clear(available);
-        Array.Fill(safeSequence, -1);
-
         showResult = false;
     }
 
-    public void CreateAnswer(bool isSafe)
+    public void CreateAnswer(int[] safeSequence)
     {
         answer = string.Empty;
         for (int i = 0; i < numberOfProcesses; i++)

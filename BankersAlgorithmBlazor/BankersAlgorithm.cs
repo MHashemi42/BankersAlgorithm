@@ -2,9 +2,12 @@
 {
     public static class BankersAlgorithm
     {
-        public static void CalculateNeedMatrix(int numberOfProcesses, int numberOfResources,
-            int[,] maxMatrix, int[,] allocationMatrix, int[,] needMatrix)
+        public static void CalculateNeedMatrix(int[,] maxMatrix, int[,] allocationMatrix,
+            int[,] needMatrix)
         {
+            int numberOfProcesses = allocationMatrix.GetLength(0);
+            int numberOfResources = allocationMatrix.GetLength(1);
+
             for (int i = 0; i < numberOfProcesses; i++)
             {
                 for (int j = 0; j < numberOfResources; j++)
@@ -14,9 +17,11 @@
             }
         }
 
-        public static void CalculateAvailable(int numberOfProcesses, int numberOfResources,
-            int[,] allocationMatrix, int[] available)
+        public static void CalculateAvailable(int[,] allocationMatrix, int[] available)
         {
+            int numberOfProcesses = allocationMatrix.GetLength(0);
+            int numberOfResources = allocationMatrix.GetLength(1);
+
             for (int i = 0; i < numberOfProcesses; i++)
             {
                 for (int j = 0; j < numberOfResources; j++)
@@ -26,11 +31,14 @@
             }
         }
 
-        public static bool IsSafe(int numberOfProcesses, int numberOfResources,
-            int[] available, int[,] allocationMatrix, int[,] needMatrix,
-            int[] safeSequence)
+        public static (bool isSafe, int[] safeSequence) IsSafe(int[] available,
+            int[,] allocationMatrix, int[,] needMatrix)
         {
-            bool[] visited = new bool[numberOfProcesses];
+            int numberOfProcesses = allocationMatrix.GetLength(0);
+            int numberOfResources = allocationMatrix.GetLength(1);
+            bool[] finished = new bool[numberOfProcesses];
+            int[] safeSequence = new int[numberOfProcesses];
+            Array.Fill(safeSequence, -1);
 
             int count = 0;
             while (count < numberOfProcesses)
@@ -38,26 +46,27 @@
                 bool flag = false;
                 for (int i = 0; i < numberOfProcesses; i++)
                 {
-                    if (visited[i])
+                    if (finished[i])
                     {
                         continue;
                     }
 
-                    int j;
-                    for (j = 0; j < numberOfResources; j++)
+                    bool canRunProcess = true;
+                    for (int j = 0; j < numberOfResources; j++)
                     {
                         if (needMatrix[i, j] > available[j])
                         {
+                            canRunProcess = false;
                             break;
                         }
                     }
 
-                    if (j == numberOfResources)
+                    if (canRunProcess)
                     {
                         safeSequence[count++] = i;
-                        visited[i] = true;
+                        finished[i] = true;
                         flag = true;
-                        for (j = 0; j < numberOfResources; j++)
+                        for (int j = 0; j < numberOfResources; j++)
                         {
                             available[j] += allocationMatrix[i, j];
                         }
@@ -70,7 +79,8 @@
                 }
             }
 
-            return count >= numberOfProcesses;
+            bool isSafe = count >= numberOfProcesses;
+            return (isSafe, safeSequence);
         }
     }
 }
