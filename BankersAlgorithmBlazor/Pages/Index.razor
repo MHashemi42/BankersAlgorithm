@@ -1,7 +1,7 @@
 ﻿@page "/"
 
 <div class="container mt-5">
-    <h1 class="text-center">الگوریتم بانکداران - محمد هاشمی</h1>
+    <h1 class="text-center">الگوریتم بانکداران</h1>
     <div class="row mt-5 text-center justify-content-evenly">
         <div class="col-3 col-lg-2">
             <label for="resourceA" class="form-label">A تعداد منبع</label>
@@ -17,231 +17,9 @@
         </div>
     </div>
     <div class="row justify-content-center mt-4">
-        <div class="col-12 col-md-6 col-lg-4 col-xl-3 px-3 mt-3">
-            <h3 class="text-center">Allocation</h3>
-            <table class="table">
-                <thead>
-                    <tr class="text-center">
-                        <th scope="col">#</th>
-                        <th scope="col">A</th>
-                        <th scope="col">B</th>
-                        <th scope="col">C</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">P0</th>
-                        <td>
-                            <input type="number" min="0" @bind="allocationMatrix[0,0]" class="form-control">
-                        </td>
-                        <td>
-                            <input type="number" min="0"  @bind="allocationMatrix[0,1]" class="form-control">
-                        </td>
-                        <td>
-                            <input type="number" min="0" @bind="allocationMatrix[0,2]" class="form-control">
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">P1</th>
-                        <td>
-                            <input type="number" min="0" @bind="allocationMatrix[1,0]" class="form-control">
-                        </td>
-                        <td>
-                            <input type="number" min="0" @bind="allocationMatrix[1,1]" class="form-control">
-                        </td>
-                        <td>
-                            <input type="number" min="0" @bind="allocationMatrix[1,2]" class="form-control">
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">P2</th>
-                        <td>
-                            <input type="number" min="0" @bind="allocationMatrix[2,0]" class="form-control">
-                        </td>
-                        <td>
-                            <input type="number" min="0" @bind="allocationMatrix[2,1]" class="form-control">
-                        </td>
-                        <td>
-                            <input type="number" min="0" @bind="allocationMatrix[2,2]" class="form-control">
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">P3</th>
-                        <td>
-                            <input type="number" min="0" @bind="allocationMatrix[3,0]" class="form-control">
-                        </td>
-                        <td>
-                            <input type="number" min="0" @bind="allocationMatrix[3,1]" class="form-control">
-                        </td>
-                        <td>
-                            <input type="number" min="0" @bind="allocationMatrix[3,2]" class="form-control">
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">P4</th>
-                        <td>
-                            <input type="number" min="0" @bind="allocationMatrix[4,0]" class="form-control">
-                        </td>
-                        <td>
-                            <input type="number" min="0" @bind="allocationMatrix[4,1]" class="form-control">
-                        </td>
-                        <td>
-                            <input type="number" min="0" @bind="allocationMatrix[4,2]" class="form-control">
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="col-12 col-md-6 col-lg-4 col-xl-3 px-3 mt-3">
-            <h3 class="text-center">Maximum</h3>
-            <table class="table">
-                <thead>
-                    <tr class="text-center">
-                        <th scope="col">#</th>
-                        <th scope="col">A</th>
-                        <th scope="col">B</th>
-                        <th scope="col">C</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">P0</th>
-                        <td>
-                            <input type="number" min="0" @bind="maxMatrix[0,0]" class="form-control">
-                        </td>
-                        <td>
-                            <input type="number" min="0" @bind="maxMatrix[0,1]" class="form-control">
-                        </td>
-                        <td>
-                            <input type="number" min="0" @bind="maxMatrix[0,2]" class="form-control">
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">P1</th>
-                        <td>
-                            <input type="number" min="0" @bind="maxMatrix[1,0]" class="form-control">
-                        </td>
-                        <td>
-                            <input type="number" min="0" @bind="maxMatrix[1,1]" class="form-control">
-                        </td>
-                        <td>
-                            <input type="number" min="0" @bind="maxMatrix[1,2]" class="form-control">
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">P2</th>
-                        <td>
-                            <input type="number" min="0" @bind="maxMatrix[2,0]" class="form-control">
-                        </td>
-                        <td>
-                            <input type="number" min="0" @bind="maxMatrix[2,1]" class="form-control">
-                        </td>
-                        <td>
-                            <input type="number" min="0" @bind="maxMatrix[2,2]" class="form-control">
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">P3</th>
-                        <td>
-                            <input type="number" min="0" @bind="maxMatrix[3,0]" class="form-control">
-                        </td>
-                        <td>
-                            <input type="number" min="0" @bind="maxMatrix[3,1]" class="form-control">
-                        </td>
-                        <td>
-                            <input type="number" min="0" @bind="maxMatrix[3,2]" class="form-control">
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">P4</th>
-                        <td>
-                            <input type="number" min="0" @bind="maxMatrix[4,0]" class="form-control">
-                        </td>
-                        <td>
-                            <input type="number" min="0" @bind="maxMatrix[4,1]" class="form-control">
-                        </td>
-                        <td>
-                            <input type="number" min="0" @bind="maxMatrix[4,2]" class="form-control">
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="col-12 col-md-6 col-lg-4 col-xl-3 px-3 mt-3">
-            <h3 class="text-center">Need</h3>
-            <table class="table">
-                <thead>
-                    <tr class="text-center">
-                        <th scope="col">#</th>
-                        <th scope="col">A</th>
-                        <th scope="col">B</th>
-                        <th scope="col">C</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">P0</th>
-                        <td>
-                            <input readonly type="number" @bind="needMatrix[0,0]" class="form-control">
-                        </td>
-                        <td>
-                            <input readonly type="number" @bind="needMatrix[0,1]" class="form-control">
-                        </td>
-                        <td>
-                            <input readonly type="number" @bind="needMatrix[0,2]" class="form-control">
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">P1</th>
-                        <td>
-                            <input readonly type="number" @bind="needMatrix[1,0]" class="form-control">
-                        </td>
-                        <td>
-                            <input readonly type="number" @bind="needMatrix[1,1]" class="form-control">
-                        </td>
-                        <td>
-                            <input readonly type="number" @bind="needMatrix[1,2]" class="form-control">
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">P2</th>
-                        <td>
-                            <input readonly type="number" @bind="needMatrix[2,0]" class="form-control">
-                        </td>
-                        <td>
-                            <input readonly type="number" @bind="needMatrix[2,1]" class="form-control">
-                        </td>
-                        <td>
-                            <input readonly type="number" @bind="needMatrix[2,2]" class="form-control">
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">P3</th>
-                        <td>
-                            <input readonly type="number" @bind="needMatrix[3,0]" class="form-control">
-                        </td>
-                        <td>
-                            <input readonly type="number" @bind="needMatrix[3,1]" class="form-control">
-                        </td>
-                        <td>
-                            <input readonly type="number" @bind="needMatrix[3,2]" class="form-control">
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">P4</th>
-                        <td>
-                            <input readonly type="number" @bind="needMatrix[4,0]" class="form-control">
-                        </td>
-                        <td>
-                            <input readonly type="number" @bind="needMatrix[4,1]" class="form-control">
-                        </td>
-                        <td>
-                            <input readonly type="number" @bind="needMatrix[4,2]" class="form-control">
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        <Matrix MatrixName="Allocation" MatrixValues="@allocationMatrix"></Matrix>
+        <Matrix MatrixName="Maximum" MatrixValues="@maxMatrix"></Matrix>
+        <Matrix MatrixName="Need" MatrixValues="@needMatrix"></Matrix>
         <div class="col-12 col-md-6 col-lg-4 col-xl-3 px-3 mt-3">
             <div class="row">
                 <h3 class="text-center">Available</h3>
@@ -340,10 +118,11 @@
 
         BankersAlgorithm.CalculateAvailable(allocationMatrix, available);
 
-        (isSafe, int[] safeSequence) = BankersAlgorithm
+        BankersAlgorithmResult result = BankersAlgorithm
             .IsSafe(available,allocationMatrix, needMatrix);
 
-        CreateAnswer(safeSequence);
+        isSafe = result.IsSafe;
+        CreateAnswer(result.SafeSequence);
         showResult = true;
     }
 

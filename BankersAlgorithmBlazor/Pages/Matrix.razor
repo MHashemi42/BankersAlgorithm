@@ -1,0 +1,82 @@
+﻿<div class="col-12 col-md-6 col-lg-4 col-xl-3 px-3 mt-3">
+    <h3 class="text-center">@MatrixName</h3>
+    <table class="table">
+        <thead>
+            <tr class="text-center">
+                <th scope="col">#</th>
+                <th scope="col">A</th>
+                <th scope="col">B</th>
+                <th scope="col">C</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">P0</th>
+                <td>
+                    <input type="number" min="0" @bind="MatrixValues[0,0]" class="form-control">
+                </td>
+                <td>
+                    <input type="number" min="0" @bind="MatrixValues[0,1]" class="form-control">
+                </td>
+                <td>
+                    <input type="number" min="0" @bind="MatrixValues[0,2]" class="form-control">
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">P1</th>
+                <td>
+                    <input type="number" min="0" @bind="MatrixValues[1,0]" class="form-control">
+                </td>
+                <td>
+                    <input type="number" min="0" @bind="MatrixValues[1,1]" class="form-control">
+                </td>
+                <td>
+                    <input type="number" min="0" @bind="MatrixValues[1,2]" class="form-control">
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">P2</th>
+                <td>
+                    <input type="number" min="0" @bind="MatrixValues[2,0]" class="form-control">
+                </td>
+                <td>
+                    <input type="number" min="0" @bind="MatrixValues[2,1]" class="form-control">
+                </td>
+                <td>
+                    <input type="number" min="0" @bind="MatrixValues[2,2]" class="form-control">
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">P3</th>
+                <td>
+                    <input type="number" min="0" @bind="MatrixValues[3,0]" class="form-control">
+                </td>
+                <td>
+                    <input type="number" min="0" @bind="MatrixValues[3,1]" class="form-control">
+                </td>
+                <td>
+                    <input type="number" min="0" @bind="MatrixValues[3,2]" class="form-control">
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">P4</th>
+                <td>
+                    <input type="number" min="0" @bind="MatrixValues[4,0]" class="form-control">
+                </td>
+                <td>
+                    <input type="number" min="0" @bind="MatrixValues[4,1]" class="form-control">
+                </td>
+                <td>
+                    <input type="number" min="0" @bind="MatrixValues[4,2]" class="form-control">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+@code {
+    [Parameter]
+    public required string MatrixName { get; set; }
+    [Parameter]
+    public required int[,] MatrixValues { get; set; }
+}

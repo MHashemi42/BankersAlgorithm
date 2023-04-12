@@ -31,22 +31,23 @@
             }
         }
 
-        public static (bool isSafe, int[] safeSequence) IsSafe(int[] available,
+        public static BankersAlgorithmResult IsSafe(int[] available,
             int[,] allocationMatrix, int[,] needMatrix)
         {
             int numberOfProcesses = allocationMatrix.GetLength(0);
             int numberOfResources = allocationMatrix.GetLength(1);
-            bool[] finished = new bool[numberOfProcesses];
+
+            bool[] processFinished = new bool[numberOfProcesses];
             int[] safeSequence = new int[numberOfProcesses];
             Array.Fill(safeSequence, -1);
 
             int count = 0;
             while (count < numberOfProcesses)
             {
-                bool flag = false;
+                bool atLeastOneProcessCanRun = false;
                 for (int i = 0; i < numberOfProcesses; i++)
                 {
-                    if (finished[i])
+                    if (processFinished[i])
                     {
                         continue;
                     }
@@ -64,8 +65,8 @@
                     if (canRunProcess)
                     {
                         safeSequence[count++] = i;
-                        finished[i] = true;
-                        flag = true;
+                        processFinished[i] = true;
+                        atLeastOneProcessCanRun = true;
                         for (int j = 0; j < numberOfResources; j++)
                         {
                             available[j] += allocationMatrix[i, j];
@@ -73,14 +74,14 @@
                     }
                 }
 
-                if (flag == false)
+                if (atLeastOneProcessCanRun == false)
                 {
                     break;
                 }
             }
 
-            bool isSafe = count >= numberOfProcesses;
-            return (isSafe, safeSequence);
+            bool isSafe = count == numberOfProcesses;
+            return new BankersAlgorithmResult(isSafe, safeSequence);
         }
     }
 }
