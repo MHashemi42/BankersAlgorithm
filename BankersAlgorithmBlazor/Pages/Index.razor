@@ -20,37 +20,13 @@
         <Matrix MatrixName="Allocation" MatrixValues="@allocationMatrix"></Matrix>
         <Matrix MatrixName="Maximum" MatrixValues="@maxMatrix"></Matrix>
         <Matrix MatrixName="Need" MatrixValues="@needMatrix"></Matrix>
+        <Available AvailableValues="@allAvailableRecords"></Available>
         <div class="col-12 col-md-6 col-lg-4 col-xl-3 px-3 mt-3">
-            <div class="row">
-                <h3 class="text-center">Available</h3>
-                <table class="table">
-                    <thead>
-                        <tr class="text-center">
-                            <th scope="col">A</th>
-                            <th scope="col">B</th>
-                            <th scope="col">C</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <input readonly type="number" @bind="available[0]" class="form-control" id="resourceC">
-                            </td>
-                            <td>
-                                <input readonly type="number" @bind="available[1]" class="form-control" id="resourceC">
-                            </td>
-                            <td>
-                                <input readonly type="number" @bind="available[2]" class="form-control" id="resourceC">
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
             <div class="row justify-content-center  @(showResult ? "" : "invisible")" dir="rtl">
                 <div class="card text-bg-@(isSafe ? "success" : "danger") mb-3" style="max-width: 20rem;">
                     <div class="card-header">نتیجه الگوریتم</div>
                     <div class="card-body">
-                        <h5 class="card-title">@(isSafe ? "امن" : "بن بست")</h5>
+                        <h5 class="card-title">@(isSafe ? "امن" : "ناامن")</h5>
                         <p class="card-text">
                             @answer
                         </p>
@@ -81,6 +57,7 @@
     int[,] maxMatrix;
     int[,] needMatrix;
     int[] available;
+    int[,] allAvailableRecords;
 
     bool showResult = false;
     bool isSafe = false;
@@ -106,6 +83,7 @@
         };
         needMatrix = new int[numberOfProcesses, numberOfResources];
         available = new int[numberOfResources];
+        allAvailableRecords = new int[numberOfProcesses + 1, numberOfResources];
     }
 
     public void StartAlgorithm()
@@ -120,6 +98,8 @@
 
         BankersAlgorithmResult result = BankersAlgorithm
             .IsSafe(available,allocationMatrix, needMatrix);
+
+        allAvailableRecords = result.allAvailableRecords;
 
         isSafe = result.IsSafe;
         CreateAnswer(result.SafeSequence);

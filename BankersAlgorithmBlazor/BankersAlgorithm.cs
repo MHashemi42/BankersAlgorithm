@@ -40,6 +40,14 @@
             bool[] processFinished = new bool[numberOfProcesses];
             int[] safeSequence = new int[numberOfProcesses];
             Array.Fill(safeSequence, -1);
+            int[] work = new int[numberOfResources];
+            Array.Copy(available, work, available.Length);
+
+            int[,] allAvailableRecords = new int[numberOfProcesses + 1, numberOfResources];
+            for (int i = 0; i < 3; i++)
+            {
+                allAvailableRecords[0, i] = work[i];
+            }
 
             int count = 0;
             while (count < numberOfProcesses)
@@ -55,7 +63,7 @@
                     bool canRunProcess = true;
                     for (int j = 0; j < numberOfResources; j++)
                     {
-                        if (needMatrix[i, j] > available[j])
+                        if (needMatrix[i, j] > work[j])
                         {
                             canRunProcess = false;
                             break;
@@ -69,8 +77,13 @@
                         atLeastOneProcessCanRun = true;
                         for (int j = 0; j < numberOfResources; j++)
                         {
-                            available[j] += allocationMatrix[i, j];
+                            work[j] += allocationMatrix[i, j];
                         }
+                    }
+
+                    for (int j = 0; j < 3; j++)
+                    {
+                        allAvailableRecords[count, j] = work[j];
                     }
                 }
 
@@ -81,7 +94,7 @@
             }
 
             bool isSafe = count == numberOfProcesses;
-            return new BankersAlgorithmResult(isSafe, safeSequence);
+            return new BankersAlgorithmResult(isSafe, safeSequence, allAvailableRecords);
         }
     }
 }
