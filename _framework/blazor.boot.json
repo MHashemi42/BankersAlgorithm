@@ -7,8 +7,8 @@
   "linkerEnabled": true,
   "resources": {
     "assembly": {
-      "BankersAlgorithmBlazor.dll": "sha256-m04XlT+RkxYuH+bK+DOuNFdKmYZDsAmbgYYW7GH74gY=",
-      "Microsoft.AspNetCore.Components.dll": "sha256-c0DhHW7qzCW\/a\/7RfVvxzeBjNuXgwziGmfOwNcmL18U=",
+      "BankersAlgorithmBlazor.dll": "sha256-8UP7qFmyuwrTs7eCIm6aSU4aaf5mROvhb+\/K1ENx2+k=",
+      "Microsoft.AspNetCore.Components.dll": "sha256-8EiMrZz0qFNwtI+c0puo5ls0KkTM3+omf97y7vJj9wc=",
       "Microsoft.AspNetCore.Components.Web.dll": "sha256-xbljJkHE5KLll7mQpC+wXP9vzkyjydGEqjedSx\/04pU=",
       "Microsoft.AspNetCore.Components.WebAssembly.dll": "sha256-2Jg3mQhCSyqkofbgXHMRw0whL7fAl07+VKYd0lApk7I=",
       "Microsoft.Extensions.Configuration.Abstractions.dll": "sha256-X\/f4fDl2cuIRXeWHhK\/f2UqQbFioD+RU4a4CEh0zrrQ=",
